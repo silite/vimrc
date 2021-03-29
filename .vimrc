@@ -8,6 +8,8 @@ let mapleader = " "
 set hlsearch
 set incsearch
 
+set clipboard=unnamed
+
 " plugins
 set easymotion
 set surround
@@ -45,6 +47,7 @@ nnoremap <leader>w- <C-W>s
 noremap <leader>wv <C-W>v
 nnoremap <leader>w\| <C-W>v
 
+" copy and paste
 noremap <leader>y "*y
 noremap <leader>Y "*ygvd
 noremap <leader>p "*p
