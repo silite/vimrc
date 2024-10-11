@@ -1,5 +1,5 @@
-# CodeWhisperer pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
+# Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 export ZSH="$HOME/.oh-my-zsh"
 
 
@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 PATH="$PATH:/opt/homebrew/bin"
 PATH=$PATH:/Users/silite/Library/Python/3.9/bin
-alias p='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias p='export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 ALL_PROXY=socks5://127.0.0.1:7890'
 alias up='unset all_proxy'
 alias lg='lazygit'
 alias kp='killport'
@@ -109,16 +109,21 @@ eval "$(atuin init zsh)"
 
 
 alias ft='ssh ft'
-alias ft11='ssh -t ft11 "zsh"'
-alias xz01='ssh -t ft11 "ssh xz01"'
-alias xz07='ssh -t ft11 "ssh xz07"'
-alias xz18='ssh -t ft11 "ssh -t xz07 \"ssh xz18_rc03\""'
-alias xz20='ssh -t ft11 "ssh -t xz20_rc03"'
-alias xz24='ssh -t ft11 "ssh -t xz01 \"ssh xz24\""'
-alias xtpsh07='ssh -t ft11 "ssh xtpsh07"'
+alias ft113='ssh -t ft113 "zsh"'
+alias xz013='ssh -t ft113 "ssh xz01"'
+alias xz073='ssh -t ft113 "ssh xz07"'
+alias xz075='ssh -t ft113 "ssh xz07_rc05"'
+alias xz083='ssh -t ft113 "ssh -t xz01 \"ssh xz08\""'
+alias xz183='ssh -t ft113 "ssh -t xz07 \"ssh xz18_rc03\""'
+alias xz203='ssh -t ft113 "ssh -t xz20_rc03"'
+alias xz243='ssh -t ft113 "ssh -t xz01 \"ssh xz24\""'
+alias xtpsh073='ssh -t ft113 "ssh xtpsh07"'
 alias cicct0='ssh cicct0'
 alias silite='ssh silite'
 alias ftvpn='ssh ftvpn'
+alias ft11='ssh -t ftvpn "ssh ft11"'
+alias xz07='ssh -t ftvpn "ssh xz07"'
+alias xz08='ssh -t ftvpn "ssh xz08"'
 
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
@@ -127,7 +132,10 @@ export CLASSPATH=$(find $HADOOP_HOME -iname "*.jar" | xargs echo | tr ' ' ':')
 export LD_LIBRARY_PATH=${JAVA_HOME}/lib/server:$HADOOP_HOME/lib/native/:${LD_LIBRARY_PATH}
 
 
-alias c='cargo check'
+
+alias cc='cargo check'
+alias cq='cargo check --quiet'
+alias c='cargo check --message-format=short'
 cd() {
     builtin cd "$@" && ll -h
 }
@@ -141,22 +149,46 @@ alias P='cd ~/Project'
 
 # git
 alias gc='git checkout'
+alias gcb='git checkout -b'
 alias gm='EDITOR=code git commit'
-alias gl='git log --graph --oneline'
+alias gl='git pull'
+alias gll='git log --graph --oneline'
+alias glp='git log --graph'
 alias gla='git log --graph --oneline --all'
 alias gs='git status'
 alias gh='git show'
 alias ghash='git log -1 --format="%h" | pbcopy | echo `git log -1 --format="%h"`'
-alias gp='f() { git commit -a -m "$*" && git push; }; f'
+alias gp='git push'
+alias gpf='git push --force'
 alias gd='git diff'
-alias ga='git add -p'
+alias ga='git add '
+alias gma='git add . && EDITOR=code git commit'
 alias gb='git branch'
+alias gba='git branch -a'
+alias gr='git rebase'
+alias grs='git reset'
+gsq() {
+    git rebase -i "HEAD~$1"
+}
 
 alias cargop='eval `ssh-agent -s` && ssh-add'
 
 alias win='bash /Users/silite/Project/Em/Crack_Parallels/Launch_Parallels.command'
 
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
 alias ll='exa -l'
 LIBRARY_PATH=/opt/homebrew/Cellar/mysql/8.2.0_1/lib
+alias pkl="~/pkl/pkl"
+
+export PATH="$PATH:$HOME/bin"export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# Add Docker Desktop for Mac (docker)
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+export PATH="/opt/homebrew/opt:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/mysql/lib/pkgconfig:$PKG_CONFIG_PATH"
+export LIBCLANG_PATH="/opt/homebrew/opt/llvm/lib"
+export MYSQL_CLIENT_PATH="/opt/homebrew/opt/mysql"
+
+# Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+export TA_LIB_PATH=/opt/homebrew/Cellar/ta-lib/0.4.0/include/ta-lib
+export TA_LIB_LIB_PATH=/opt/homebrew/Cellar/ta-lib/0.4.0/lib
+
